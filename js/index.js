@@ -8,12 +8,12 @@ let ageInputTouched = false;
 let passwordInputTouched = false;
 let repasswordInputTouched = false;
 
-// --------------Start Loader --------------
-$(document).ready(() => {
+// --------------Start Loader until document load--------------
+$(function() {
   searchByName("").then(() => {
-      $(".loading").fadeOut(500)
-      $("body").css("overflow", "visible")
-  })
+    $(".loading").fadeOut(500)
+    $("body").css("overflow", "visible")
+})
 })
 
 // --------------start of Nav methods --------------
@@ -72,7 +72,7 @@ function displayMeals(arr) {
     cartona += `<div class="col-md-3">
                     <div onclick="getMealDetails('${arr[i].idMeal}')" class="meal position-relative overflow-hidden rounded-2">
                         <img src="${arr[i].strMealThumb}" class="w-100" alt>
-                        <div class="layer position-absolute d-flex align-items-center text-black p-2">
+                        <div class="layer position-absolute d-flex align-items-center justify-content-center text-black p-2">
                             <h3>${arr[i].strMeal}</h3>
                         </div>
                     </div>
@@ -141,10 +141,10 @@ rowData.innerHTML = cartona;
 function searchInputs() {
   searchContainer.innerHTML = ` <div class="row py-4 ">
                                   <div class="col-md-6 ">
-                                      <input onkeyup="searchByName(this.value)" class="form-control bg-transparent text-white" type="text" placeholder="Search By Name">
+                                      <input onkeyup="searchByName(this.value)" class="form-control bg-transparent text-white got" type="text" placeholder="Search By Name">
                                   </div>
                                   <div class="col-md-6">
-                                      <input onkeyup="searchByFirstLetter(this.value)" maxlength="1" class="form-control bg-transparent text-white" type="text" placeholder="Search By First Letter">
+                                      <input onkeyup="searchByFirstLetter(this.value)" maxlength="1" class="form-control bg-transparent text-white got" type="text" placeholder="Search By First Letter">
                                   </div>
                                 </div>`;
   rowData.innerHTML = "";
@@ -301,6 +301,7 @@ async function getIngredientsMeals(ingredient) {
 
 // --------------start of Contact methods --------------
 function displayContact() {
+  searchContainer.innerHTML = "";
   rowData.innerHTML = `<div class="contact min-vh-100 d-flex justify-content-center align-items-center">
                             <div class="container w-75 text-center">
                                 <div class="row g-4">

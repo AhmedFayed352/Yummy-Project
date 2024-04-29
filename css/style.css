@@ -37,3 +37,6 @@ nav {
 .meal:hover .layer {
   top: 0;
 }
+.got::placeholder {
+  color: #f9f6f6ca;
+}
